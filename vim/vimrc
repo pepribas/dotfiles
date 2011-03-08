@@ -122,8 +122,8 @@ nmap <C-Down> :bp<CR>
 nmap <C-UP> :bn<CR>
 
 
-map <leader>cs :mksession! ~/.vim/.session<CR>
-map <leader>ls :source ~/.vim/.session<CR>
+map <leader>cs :mksession! ~/.vim/session<CR>
+map <leader>ls :source ~/.vim/session<CR>
 
 map q :q<CR>
 
