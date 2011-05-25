@@ -54,7 +54,11 @@ function __git_ps1 {
     echo "("${ref#refs/heads/}")"
     }
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[0;32m\]\u@\h\[\033[00m\]:\[\033[0;36m\]\W\[\033[00m\]\[\033[0;33m\]$(__git_ps1 "(%s)")\[\033[0;37m\]\$ '
+    if [[ ${EUID} == 0 ]] ; then
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[1;31m\]\u@\h\[\033[00m\]:\[\033[0;36m\]\W\[\033[00m\]\[\033[0;33m\]$(__git_ps1 "(%s)")\[\033[0;37m\]\$ '
+    else
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[0;32m\]\u@\h\[\033[00m\]:\[\033[0;36m\]\W\[\033[00m\]\[\033[0;33m\]$(__git_ps1 "(%s)")\[\033[0;37m\]\$ '
+    fi
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -123,5 +127,8 @@ if [ -d ~/bin ] ; then
 fi
 
 #todo.txt
-source ~/Dropbox/todo/bash_completion
+if [ -f ~/Dropbox/todo/bash_completion ]; then
+    source ~/Dropbox/todo/bash_completion
+fi
+
 alias t='todo.sh -d ~/Dropbox/todo/todo.cfg'
