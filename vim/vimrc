@@ -37,7 +37,9 @@ set hlsearch            " highlight search
 "set autowrite		    " Automatically save before commands like :next and :make
 set nonumber
 " set nu
-set mouse=a             " add mouse interaction
+if has('mouse')
+  set mouse=a             " add mouse interaction
+endif
 
 " Highlight column/line
 set cursorline
