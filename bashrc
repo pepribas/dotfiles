@@ -72,7 +72,9 @@ xterm*|rxvt*)
 *)
     ;;
 esac
-
+if [ -n "$MYENV" ]; then
+  PS1="\e[0;35m[$MYENV] $PS1"
+fi
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
