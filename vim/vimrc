@@ -98,7 +98,8 @@ autocmd BufReadPost *
 "------------------------------------------------------------------------------
 
 
-map <F1> :NERDTreeToggle<cr>
+map <F1> :NERDTreeToggle ~/workspace/<cr>
+let NERDTreeShowBookmarks=1
 
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 

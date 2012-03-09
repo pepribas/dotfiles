@@ -1,6 +1,7 @@
 " Misc --------------------------------------------------------------------{{{1
 
 set guioptions-=tT  " Disable the toolbar and menu tearoffs
+set guioptions-=m
 "set guioptions-=m
 set guitabtooltip=%{InfoGuiTooltip()}  " Info to show in tab tooltip
 
@@ -17,6 +18,11 @@ set ballooneval balloonexpr=FoldSpellBalloon()
 
 nmap <silent> <leader>mb :ToggleMenubar<cr>
 nmap <silent> <leader>tb :ToggleToolbar<cr>
+if has("gui_running")
+   " GUI is running or is about to start.
+   " Maximize gvim window.
+   set lines=999 columns=999
+endif
 
 " Functions ---------------------------------------------------------------{{{1
 
