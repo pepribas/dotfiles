@@ -62,7 +62,7 @@ endif
 "set listchars=tab:>-,trail:·,eol:¶
 set listchars=tab:>-,trail:·
 
-colorscheme zenburn
+colorscheme wombat256mod
 
 " Map .less to .css , lessc is required.
 nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
@@ -74,6 +74,15 @@ if has("autocmd")
  filetype plugin indent on
  filetype plugin on
 endif " has ("autocmd")
+
+au BufRead,BufNewFile *.py  set ai sw=4 sts=4 et tw=72 " Doc strs
+au BufRead,BufNewFile *.js  set ai sw=4 sts=4 et tw=72 " Doc strs
+au BufRead,BufNewFile *.html set ai sw=4 sts=4 et tw=72 " Doc strs
+au BufRead,BufNewFile *.json set ai sw=4 sts=4 et tw=72 " Doc strs
+au BufRead,BufNewFile *.less set ai sw=4 sts=4 et tw=72 " Doc strs
+au! BufRead,BufNewFile *.json setfiletype json
+au BufNewFile,BufRead *.less set filetype=less
+au BufNewFile,BufRead *.styl set filetype=styl
 
 " This makes Vim show a status line even when only one window is shown. Who
 " said a status line is only useful to separate multiple windows?
