@@ -82,7 +82,11 @@ function! ToggleToolbar()
     endif
 endfunction
 
-set guifont=Monospace\ 9
+if has("gui_macvim")
+  set guifont=Monaco:h13
+else
+  set guifont=Monospace\ 9
+endif
 
 " Commands ----------------------------------------------------------------{{{1
 

@@ -59,8 +59,7 @@ endif
 
 " Tell vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
-"set listchars=tab:>-,trail:·,eol:¶
-set listchars=tab:>-,trail:·
+set listchars=tab:\|-,trail:·
 
 colorscheme wombat256mod
 
@@ -126,19 +125,19 @@ nmap <F6> :set list!<CR>
 nnoremap <F7> :call ToggleShowWhitespace()<CR>
 
 nnoremap <C-c> :bdelete<CR>
-nmap <C-left> :tabprevious<cr>
-nmap <C-right> :tabnext<cr>
+nmap <C-h> :tabprevious<cr>
+nmap <C-l> :tabnext<cr>
 nmap <C-t> :tabnew<cr>
 map <C-t> :tabnew<cr>
-map <C-left> :tabprevious<cr>
-map <C-right> :tabnext<cr>
+map <C-h> :tabprevious<cr>
+map <C-l> :tabnext<cr>
 map ty :tabclose<cr>
-imap <C-left> <ESC>:tabprevious<cr>
-imap <C-right> <ESC>:tabnext<cr>
+imap <C-h> <ESC>:tabprevious<cr>
+imap <C-l> <ESC>:tabnext<cr>
 imap <C-t> <ESC>:tabnew<cr>
 
-nmap <C-Down> :bp<CR>
-nmap <C-UP> :bn<CR>
+nmap <C-k> :bp<CR>
+nmap <C-j> :bn<CR>
 
 
 map <leader>cs :mksession! ~/.vim/session<CR>
