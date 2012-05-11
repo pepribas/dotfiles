@@ -14,6 +14,9 @@ set guioptions-=b
 
 " Show tooltip for either fold contents or spelling suggestions
 set ballooneval balloonexpr=FoldSpellBalloon()
+
+" visual bell
+set vb
 " Mappings ----------------------------------------------------------------{{{1
 
 nmap <silent> <leader>mb :ToggleMenubar<cr>
@@ -83,7 +86,9 @@ function! ToggleToolbar()
 endfunction
 
 if has("gui_macvim")
-  set guifont=Monaco:h13
+  set guifont=Monaco\ for\ Powerline:h12
+  let g:Powerline_symbols = 'fancy'
+  let Powerline_stl_path_style = 'short'
 else
   set guifont=Monospace\ 9
 endif

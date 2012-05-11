@@ -85,15 +85,12 @@ fi
 #fi
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
-fi
+alias ls='ls -G'
+#alias dir='dir --color=auto
+#alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+#alias fgrep='fgrep --color=auto'
+#alias egrep='egrep --color=auto'
 
 # some more ls aliases
 alias ll='ls -l'
@@ -127,6 +124,10 @@ shopt -s cdable_vars
 if [ -d ~/bin ] ; then
     PATH=~/bin:"${PATH}"
 fi
+
+#virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/share/python/virtualenvwrapper.sh
 
 #todo.txt
 if [ -f ~/Dropbox/todo/bash_completion ]; then

@@ -125,15 +125,15 @@ nmap <F6> :set list!<CR>
 nnoremap <F7> :call ToggleShowWhitespace()<CR>
 
 nnoremap <C-c> :bdelete<CR>
-nmap <C-h> :tabprevious<cr>
-nmap <C-l> :tabnext<cr>
+nmap <C-S-Left> :tabprevious<cr>
+nmap <C-S-Right> :tabnext<cr>
 nmap <C-t> :tabnew<cr>
 map <C-t> :tabnew<cr>
-map <C-h> :tabprevious<cr>
-map <C-l> :tabnext<cr>
+map <C-S-Left> :tabprevious<cr>
+map <C-S-Right> :tabnext<cr>
 map ty :tabclose<cr>
-imap <C-h> <ESC>:tabprevious<cr>
-imap <C-l> <ESC>:tabnext<cr>
+imap <C-S-Left> <ESC>:tabprevious<cr>
+imap <C-S-Right> <ESC>:tabnext<cr>
 imap <C-t> <ESC>:tabnew<cr>
 
 nmap <C-k> :bp<CR>
