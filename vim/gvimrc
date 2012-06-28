@@ -86,7 +86,7 @@ function! ToggleToolbar()
 endfunction
 
 if has("gui_macvim")
-  set guifont=Monaco\ for\ Powerline:h12
+  set guifont=Monaco\ for\ Powerline:h13
   let g:Powerline_symbols = 'fancy'
   let Powerline_stl_path_style = 'short'
 else
