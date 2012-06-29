@@ -28,3 +28,6 @@
 [submodule "vim/bundle/vim-monokai"]
 	path = vim/bundle/vim-monokai
 	url = git://github.com/sickill/vim-monokai.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
