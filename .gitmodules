@@ -31,3 +31,24 @@
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
+[submodule "emacs/colors/molokai"]
+	path = emacs/colors/molokai
+	url = git://github.com/alloy-d/color-theme-molokai.git
+[submodule "emacs/vendor/emacs-powerline"]
+	path = emacs/vendor/emacs-powerline
+	url = git://github.com/jonathanchu/emacs-powerline.git
+[submodule "emacs/vendor/auto-complete"]
+	path = emacs/vendor/auto-complete
+	url = git://github.com/m2ym/auto-complete.git
+[submodule "emacs/vendor/popup"]
+	path = emacs/vendor/popup
+	url = git://github.com/m2ym/popup-el.git
+[submodule "emacs/vendor/python-mode"]
+	path = emacs/vendor/python-mode
+	url = git://github.com/emacsmirror/python-mode.git
+[submodule "emacs/vendor/pabbrev"]
+	path = emacs/vendor/pabbrev
+	url = git://github.com/emacsmirror/pabbrev.git
+[submodule "emacs/vendor/mcomplete"]
+	path = emacs/vendor/mcomplete
+	url = git://github.com/emacsmirror/mcomplete.git
