@@ -10,8 +10,6 @@ setlocal smartindent
 if has("autocmd")
     autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
 endif
-" automcomplete
-set complete+=k~/.vim/pydiction-0.5/pydiction isk+=.,(
 " Turn on completion:
 set omnifunc=pythoncomplete#Complete
 set completeopt-=preview

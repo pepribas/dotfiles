@@ -61,7 +61,7 @@ endif
 " trailing whitespace, and end-of-lines. VERY useful!
 set listchars=tab:\|-,trail:·
 
-colorscheme Monokai
+colorscheme wombat256mod
 
 " Map .less to .css , lessc is required.
 nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>

@@ -132,6 +132,7 @@ source /usr/local/share/python/virtualenvwrapper.sh
 #todo.txt
 if [ -f ~/Dropbox/todo/bash_completion ]; then
     source ~/Dropbox/todo/bash_completion
+    complete -F _todo t
 fi
 
 alias t='todo.sh -d ~/Dropbox/todo/todo.cfg'
