@@ -135,4 +135,4 @@ if [ -f ~/Dropbox/todo/bash_completion ]; then
     complete -F _todo t
 fi
 
-alias t='todo.sh -d ~/Dropbox/todo/todo.cfg'
+alias t='todo.sh -d -t ~/Dropbox/todo/todo.cfg'

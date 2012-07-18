@@ -33,6 +33,7 @@ set ignorecase		    " Do case insensitive matching
 set smartcase
 set nosmartindent
 set hlsearch            " highlight search
+nnoremap <leader><space> :noh<cr>
 "set incsearch		    " Incremental search
 "set autowrite		    " Automatically save before commands like :next and :make
 set nonumber
@@ -59,7 +60,7 @@ endif
 
 " Tell vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
-set listchars=tab:\|-,trail:·
+set listchars=tab:▸\ ,trail:·
 
 colorscheme wombat256mod
 
@@ -107,9 +108,20 @@ autocmd BufReadPost *
 "------------------------------------------------------------------------------
 " Function keys.
 "------------------------------------------------------------------------------
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
+" nnoremap j gj
+" nnoremap k gk
 
+nnoremap <leader>a :Ack
 
-map <F1> :NERDTreeToggle ~/workspace/<cr>
+map <F1> :NERDTreeToggle<cr>
 let NERDTreeShowBookmarks=1
 
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
@@ -143,6 +155,7 @@ nmap <C-j> :bn<CR>
 map <leader>cs :mksession! ~/.vim/session<CR>
 map <leader>ls :source ~/.vim/session<CR>
 
+nmap <leader>1 :e ~/Dropbox/todo/todo.txt<CR>
 map q :q<CR>
 
 " Some Debian-specific things
