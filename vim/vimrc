@@ -155,6 +155,9 @@ imap <C-t> <ESC>:tabnew<cr>
 nmap <C-k> :bp<CR>
 nmap <C-j> :bn<CR>
 
+" toggle comments with NERDCommenter
+vmap <C-c> <Leader>c<space>gv
+map <C-c> <Leader>c<space>
 
 map <leader>cs :mksession! ~/.vim/session<CR>
 map <leader>ls :source ~/.vim/session<CR>
