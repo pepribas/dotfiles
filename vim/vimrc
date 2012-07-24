@@ -34,7 +34,7 @@ set smartcase
 set nosmartindent
 set hlsearch            " highlight search
 nnoremap <leader><space> :noh<cr>
-"set incsearch		    " Incremental search
+set incsearch		    " Incremental search
 "set autowrite		    " Automatically save before commands like :next and :make
 set nonumber
 " set nu
@@ -46,6 +46,10 @@ endif
 set cursorline
 "set cursorcolumn
 
+" Autocomplete in explore
+set wildmenu
+set wildmode=longest,list
+set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.class
 let mapleader = ","
 
 "pathogen
