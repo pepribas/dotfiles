@@ -139,6 +139,7 @@ set pastetoggle=<F4>          " activa o desactiva el mode paste
 set list
 nmap <F6> :set list!<CR>
 nnoremap <F7> :call ToggleShowWhitespace()<CR>
+nmap <F8> :TagbarToggle<CR>
 
 nnoremap <C-c> :bdelete<CR>
 nmap <C-S-Left> :tabprevious<cr>
