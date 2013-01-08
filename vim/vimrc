@@ -36,8 +36,6 @@ set hlsearch            " highlight search
 nnoremap <leader><space> :noh<cr>
 set incsearch		    " Incremental search
 "set autowrite		    " Automatically save before commands like :next and :make
-set nonumber
-" set nu
 if has('mouse')
   set mouse=a             " add mouse interaction
 endif
@@ -64,9 +62,9 @@ endif
 
 " Tell vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
-set listchars=tab:▸\ ,trail:·
-
-colorscheme wombat256mod
+set listchars=tab:▸\ ,trail:█
+set background=dark
+colorscheme solarized
 
 " Map .less to .css , lessc is required.
 nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
@@ -79,7 +77,7 @@ if has("autocmd")
  filetype plugin on
 endif " has ("autocmd")
 
-au BufRead,BufNewFile *.py  set ai sw=4 sts=4 et tw=72 " Doc strs
+" au BufRead,BufNewFile *.py  set ai sw=4 sts=4 et tw=72 " Doc strs
 au BufRead,BufNewFile *.js  set ai sw=4 sts=4 et tw=72 " Doc strs
 au BufRead,BufNewFile *.html set ai sw=4 sts=4 et tw=72 " Doc strs
 au BufRead,BufNewFile *.json set ai sw=4 sts=4 et tw=72 " Doc strs
@@ -128,7 +126,8 @@ nnoremap <leader>a :Ack
 map <F1> :NERDTreeToggle<cr>
 let NERDTreeShowBookmarks=1
 
-nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+set nonumber
+nnoremap <F2> :set number!<CR>:set foldcolumn=0<CR>
 
 " <F3>: Toggle hlsearch (highlight search matches).
 nmap <F3> :set hls!<CR>
