@@ -82,6 +82,7 @@ au BufRead,BufNewFile *.js  set ai sw=4 sts=4 et tw=72 " Doc strs
 au BufRead,BufNewFile *.html set ai sw=4 sts=4 et tw=72 " Doc strs
 au BufRead,BufNewFile *.json set ai sw=4 sts=4 et tw=72 " Doc strs
 au BufRead,BufNewFile *.less set ai sw=4 sts=4 et tw=72 " Doc strs
+au BufRead,BufNewFile *.sql set ai sw=4 sts=4 et
 au! BufRead,BufNewFile *.json setfiletype json
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.styl set filetype=styl
@@ -141,15 +142,11 @@ nnoremap <F7> :call ToggleShowWhitespace()<CR>
 nmap <F8> :TagbarToggle<CR>
 
 nnoremap <C-c> :bdelete<CR>
-nmap <C-S-Left> :tabprevious<cr>
-nmap <C-S-Right> :tabnext<cr>
 nmap <C-t> :tabnew<cr>
 map <C-t> :tabnew<cr>
-map <C-S-Left> :tabprevious<cr>
-map <C-S-Right> :tabnext<cr>
+noremap <D-A-Left> :tabprevious<cr>
+noremap <D-A-Right> :tabnext<cr>
 map ty :tabclose<cr>
-imap <C-S-Left> <ESC>:tabprevious<cr>
-imap <C-S-Right> <ESC>:tabnext<cr>
 imap <C-t> <ESC>:tabnew<cr>
 
 nmap <C-k> :bp<CR>
