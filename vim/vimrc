@@ -28,7 +28,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
-Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
 Bundle 'bling/vim-airline'
@@ -43,6 +42,7 @@ Bundle 'hynek/vim-python-pep8-indent'
 "Bundle 'davidhalter/jedi-vim'
 
 Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
 Bundle 'jlanzarotta/bufexplorer'
 
 if has("autocmd")
@@ -115,6 +115,10 @@ au! BufRead,BufNewFile *.json setfiletype json
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.styl set filetype=styl
 
+" syntastic checkers
+let g:syntastic_python_checkers=['pyflakes']
+let g:syntastic_javascript_checkers=['jsl']
+
 " This makes Vim show a status line even when only one window is shown. Who
 " said a status line is only useful to separate multiple windows?
 set ls=2
@@ -152,11 +156,16 @@ autocmd BufReadPost *
 
 map q :q<CR>
 
-nnoremap <leader>a :Ack
+nnoremap <leader>a :Ack<space>
+nnoremap <leader>s :CtrlPBuffer<cr>
+nnoremap <leader>f :CtrlP<cr>
 
-nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <leader>t :CtrlP<cr>
+" syntastic
+map <leader>er :lnext<CR>
+map <leader>ew :lprev<CR>
+
 let g:bufExplorerFindActive=0
+let g:ctrlp_match_window = 'bottom,order:btt,min:10,max:20,results:40'
 
 map <F1> :NERDTreeToggle<cr>
 let NERDTreeShowBookmarks=1
