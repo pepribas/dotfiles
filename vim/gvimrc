@@ -19,8 +19,6 @@ set ballooneval balloonexpr=FoldSpellBalloon()
 set vb
 " Mappings ----------------------------------------------------------------{{{1
 
-nmap <silent> <leader>mb :ToggleMenubar<cr>
-nmap <silent> <leader>tb :ToggleToolbar<cr>
 if has("gui_running")
    " GUI is running or is about to start.
    " Maximize gvim window.
@@ -87,8 +85,8 @@ endfunction
 
 if has("gui_macvim")
   set guifont=Monaco\ for\ Powerline:h13
-  let g:Powerline_symbols = 'fancy'
-  let Powerline_stl_path_style = 'short'
+  " powerline symbols in airline
+  let g:airline_powerline_fonts = 1
 else
   set guifont=Monospace\ 9
 endif

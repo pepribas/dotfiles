@@ -2,3 +2,7 @@ vim/bundle/bufexplorer/doc/tags
 vim/session
 
 *.pyc
+
+vim/.netrwhist
+vim/bundle/**
+~vim/bundle/vundle

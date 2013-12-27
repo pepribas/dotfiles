@@ -10,12 +10,53 @@ if filereadable("/etc/vimrc")
   source /etc/vimrc
 endif
 
-set rtp+=~/.vim/bundle/tomorrow-theme/vim
-
 " Normally we use vim-extensions. If you want true vi-compatibility
 " remove change the following statements
 set nocompatible	"    Use Vim defaults instead of 100% vi compatibility
 set backspace=indent,eol,start	" more powerful backspacing
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" original repos on GitHub
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/syntastic'
+Bundle 'mileszs/ack.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'ervandew/supertab'
+Bundle 'bling/vim-airline'
+
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/tomorrow-theme'
+
+Bundle 'pangloss/vim-javascript'
+" python
+Bundle 'hdima/python-syntax'
+Bundle 'hynek/vim-python-pep8-indent'
+"Bundle 'davidhalter/jedi-vim'
+
+Bundle 'kien/ctrlp.vim'
+Bundle 'jlanzarotta/bufexplorer'
+
+if has("autocmd")
+ " Enabled file type detection
+ " Use the default filetype settings. If you also want to load indent files
+ " to automatically do language-dependent indenting add 'indent' as well.
+ filetype plugin indent on
+ filetype plugin on
+endif " has ("autocmd")
+
+" Theme settings
+" set background=dark
+set rtp+=~/.vim/bundle/tomorrow-theme/vim
+colorscheme Tomorrow-Night
 
 " Now we set some defaults for the editor
 set autoindent		    " always set autoindenting on
@@ -52,11 +93,6 @@ set wildmode=longest,list
 set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.class
 let mapleader = ","
 
-"pathogen
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
-call pathogen#infect()
-
 " Enable syntax-highlighting.
 if has("syntax")
   syntax on
@@ -65,19 +101,9 @@ endif
 " Tell vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
 set listchars=tab:▸\ ,trail:█
-" set background=dark
-colorscheme Tomorrow-Night
 
 " Map .less to .css , lessc is required.
 nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
-
-if has("autocmd")
- " Enabled file type detection
- " Use the default filetype settings. If you also want to load indent files
- " to automatically do language-dependent indenting add 'indent' as well.
- filetype plugin indent on
- filetype plugin on
-endif " has ("autocmd")
 
 " au BufRead,BufNewFile *.py  set ai sw=4 sts=4 et tw=72 " Doc strs
 au BufRead,BufNewFile *.js  set ai sw=4 sts=4 et tw=72 " Doc strs
@@ -126,6 +152,10 @@ autocmd BufReadPost *
 
 nnoremap <leader>a :Ack
 
+nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>t :CtrlP<cr>
+let g:bufExplorerFindActive=0
+
 map <F1> :NERDTreeToggle<cr>
 let NERDTreeShowBookmarks=1
 
@@ -140,7 +170,6 @@ set pastetoggle=<F4>          " activa o desactiva el mode paste
 " Toggle list (display unprintable characters).
 set list
 nmap <F6> :set list!<CR>
-nnoremap <F7> :call ToggleShowWhitespace()<CR>
 nmap <F8> :TagbarToggle<CR>
 
 nnoremap <C-c> :bdelete<CR>
@@ -160,87 +189,3 @@ map <C-c> <Leader>c<space>
 
 map <leader>cs :mksession! ~/.vim/session<CR>
 map <leader>ls :source ~/.vim/session<CR>
-
-nmap <leader>1 :e ~/Dropbox/todo/todo.txt<CR>
-map q :q<CR>
-
-" Some Debian-specific things
-if has("autocmd")
-  augroup filetype
-    au BufRead reportbug.*		set ft=mail
-    au BufRead reportbug-*		set ft=mail
-  augroup END
-endif
-
-
-" Set paper size from /etc/papersize if available (Debian-specific)
-if filereadable("/etc/papersize")
-  try
-    let s:shellbak = &shell
-    let &shell="/bin/sh"
-    let s:papersize = matchstr(system("cat /etc/papersize"), "\\p*")
-    let &shell=s:shellbak
-    if strlen(s:papersize)
-      let &printoptions = "paper:" . s:papersize
-    endif
-  catch /^Vim\%((\a\+)\)\=:E145/
-  endtry
-endif
-
-" grep in files
-cabbrev lvim
-      \ lvim /\<lt><C-R><C-W>\>/gj
-      \ **/*<C-R>=(expand("%:e")=="" ? "" : ".".expand("%:e"))<CR>
-      \ <Bar> lw
-      \ <C-Left><C-Left><C-Left>
-
-" Highlight whitespace problems.
-" flags is '' to clear highlighting, or is a string to
-" specify what to highlight (one or more characters):
-"   e  whitespace at end of line
-"   i  spaces used for indenting
-"   s  spaces before a tab
-"   t  tabs not at start of line
-function! ShowWhitespace(flags)
-  let bad = ''
-  let pat = []
-  for c in split(a:flags, '\zs')
-    if c == 'e'
-      call add(pat, '\s\+$')
-    elseif c == 'i'
-      call add(pat, '^\t*\zs \+')
-    elseif c == 's'
-      call add(pat, ' \+\ze\t')
-    elseif c == 't'
-      call add(pat, '[^\t]\zs\t\+')
-    else
-      let bad .= c
-    endif
-  endfor
-  if len(pat) > 0
-    let s = join(pat, '\|')
-    exec 'syntax match ExtraWhitespace "'.s.'" containedin=ALL'
-  else
-    syntax clear ExtraWhitespace
-  endif
-  if len(bad) > 0
-    echo 'ShowWhitespace ignored: '.bad
-  endif
-endfunction
-
-function! ToggleShowWhitespace()
-  if !exists('b:ws_show')
-    let b:ws_show = 0
-  endif
-  if !exists('b:ws_flags')
-    let b:ws_flags = 'est'  " default (which whitespace to show)
-  endif
-  let b:ws_show = !b:ws_show
-  if b:ws_show
-    call ShowWhitespace(b:ws_flags)
-  else
-    call ShowWhitespace('')
-  endif
-endfunction
-
-highlight ExtraWhitespace ctermbg=darkred guibg=darkred
