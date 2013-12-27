@@ -150,6 +150,8 @@ autocmd BufReadPost *
 " nnoremap j gj
 " nnoremap k gk
 
+map q :q<CR>
+
 nnoremap <leader>a :Ack
 
 nnoremap <leader>b :CtrlPBuffer<cr>
