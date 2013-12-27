@@ -10,6 +10,8 @@ if filereadable("/etc/vimrc")
   source /etc/vimrc
 endif
 
+set rtp+=~/.vim/bundle/tomorrow-theme/vim
+
 " Normally we use vim-extensions. If you want true vi-compatibility
 " remove change the following statements
 set nocompatible	"    Use Vim defaults instead of 100% vi compatibility
@@ -63,8 +65,8 @@ endif
 " Tell vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
 set listchars=tab:▸\ ,trail:█
-set background=dark
-colorscheme solarized
+" set background=dark
+colorscheme Tomorrow-Night
 
 " Map .less to .css , lessc is required.
 nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
