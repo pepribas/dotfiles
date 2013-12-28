@@ -185,7 +185,7 @@ fi
 
 # Virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/share/python/virtualenvwrapper.sh
+[ -x /usr/local/share/python/virtualenvwrapper.sh ] && source /usr/local/share/python/virtualenvwrapper.sh
 
 #todo.txt
 if [ -f ~/Dropbox/todo/bash_completion ]; then
