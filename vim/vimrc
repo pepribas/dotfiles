@@ -39,7 +39,7 @@ Bundle 'pangloss/vim-javascript'
 " python
 Bundle 'hdima/python-syntax'
 Bundle 'hynek/vim-python-pep8-indent'
-"Bundle 'davidhalter/jedi-vim'
+Bundle 'davidhalter/jedi-vim'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
@@ -115,6 +115,10 @@ au! BufRead,BufNewFile *.json setfiletype json
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.styl set filetype=styl
 
+" jedi-vim options
+let g:jedi#popup_on_dot = 0
+let g:jedi#use_splits_not_buffers = "left"
+let g:SuperTabDefaultCompletionType = "context"
 " syntastic checkers
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_javascript_checkers=['jsl']
