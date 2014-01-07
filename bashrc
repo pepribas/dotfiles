@@ -169,7 +169,7 @@ export CHANGE_LOG_NAME="Josep Joan Ribas"
 # You can subsequently move to one of the saved directories by using cd with
 # the abbreviation you chose. Eg. cd ms  (Note that no '$' is necessary.)
 # (I got this technique from Michael Boyle in the late 1980's at Visual Edge)
-alias sdirs='source ~/.dirs' 
+alias sdirs='source ~/.dirs'
 alias show='cat ~/.dirs'
 save () { sed "/$@/d" ~/.dirs > ~/.dirs1; \mv ~/.dirs1 ~/.dirs; echo "$@"=\"`pwd`\" >> ~/.dirs; source ~/.dirs ; }
 
@@ -186,13 +186,6 @@ fi
 # Virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 [ -x /usr/local/share/python/virtualenvwrapper.sh ] && source /usr/local/share/python/virtualenvwrapper.sh
-
-#todo.txt
-if [ -f ~/Dropbox/todo/bash_completion ]; then
-    source ~/Dropbox/todo/bash_completion
-    complete -F _todo t
-fi
-alias t='todo.sh -t -d ~/Dropbox/todo/todo.cfg'
 
 # RVM
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
