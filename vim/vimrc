@@ -122,6 +122,8 @@ let g:SuperTabDefaultCompletionType = "context"
 " syntastic checkers
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_javascript_checkers=['jsl']
+" nerdtree ignored extensions
+let NERDTreeIgnore = ['\.pyc$']
 
 " This makes Vim show a status line even when only one window is shown. Who
 " said a status line is only useful to separate multiple windows?
