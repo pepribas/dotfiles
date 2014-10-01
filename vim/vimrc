@@ -28,7 +28,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
 Bundle 'bling/vim-airline'
 
@@ -41,9 +40,15 @@ Bundle 'hdima/python-syntax'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'davidhalter/jedi-vim'
 
+Bundle 'diefans/vim-da-yaml'
+Bundle 'chase/vim-ansible-yaml'
+
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'jlanzarotta/bufexplorer'
+" Very slow on some files, alternative?
+"Bundle 'majutsushi/tagbar'
+
 
 if has("autocmd")
  " Enabled file type detection
@@ -117,8 +122,10 @@ au BufNewFile,BufRead *.styl set filetype=styl
 
 " jedi-vim options
 let g:jedi#popup_on_dot = 0
-let g:jedi#use_splits_not_buffers = "left"
+"let g:jedi#use_splits_not_buffers = "left"
 let g:SuperTabDefaultCompletionType = "context"
+let g:jedi#popup_select_first = 0
+let g:jedi#show_call_signatures = 0
 " syntastic checkers
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_javascript_checkers=['jsl']
@@ -190,7 +197,7 @@ set pastetoggle=<F4>          " activa o desactiva el mode paste
 " Toggle list (display unprintable characters).
 set list
 nmap <F6> :set list!<CR>
-nmap <F8> :TagbarToggle<CR>
+" nmap <F8> :TagbarToggle<CR>
 
 nnoremap <C-c> :bdelete<CR>
 nmap <C-t> :tabnew<cr>
@@ -207,5 +214,5 @@ nmap <C-j> :bn<CR>
 vmap <C-c> <Leader>c<space>gv
 map <C-c> <Leader>c<space>
 
-map <leader>cs :mksession! ~/.vim/session<CR>
+map <leader>ms :mksession! ~/.vim/session<CR>
 map <leader>ls :source ~/.vim/session<CR>
