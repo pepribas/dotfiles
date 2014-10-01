@@ -118,19 +118,17 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
-unset color_prompt force_color_prompt
 
+unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\W\a\]$PS1"
     ;;
 *)
     ;;
 esac
-if [ -n "$MYENV" ]; then
-  PS1="\e[0;35m[$MYENV] $PS1"
-fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -154,6 +152,7 @@ alias ll='ls -l'
 #alias l='ls -CF'
 
 alias hgrep='history | grep'
+alias sctl='supervisorctl'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -161,8 +160,8 @@ alias hgrep='history | grep'
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-export EMAIL_ADDRESS=jribas@flumotion.com
-export CHANGE_LOG_NAME="Josep Joan Ribas"
+export EMAIL_ADDRESS=pepribasp@gmail.com
+export CHANGE_LOG_NAME="Pep Ribas"
 
 # The following aliases (save & show) are for saving frequently used directories
 # You can save a directory using an abbreviation of your choosing. Eg. save ms
