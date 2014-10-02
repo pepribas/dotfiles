@@ -1,0 +1,21 @@
+#
+# Executes commands at the start of an interactive session.
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+path=(
+  $HOME/bin
+  $path
+)
+
+# Aliases
+alias hgrep='history | grep'
+alias sctl='supervisorctl'
+
+# localrc (machine specific shell config)
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[ -e $HOME/.localrc ] && source $HOME/.localrc
