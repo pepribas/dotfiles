@@ -17,5 +17,4 @@ alias hgrep='history | grep'
 alias sctl='supervisorctl'
 
 # localrc (machine specific shell config)
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [ -e $HOME/.localrc ] && source $HOME/.localrc
