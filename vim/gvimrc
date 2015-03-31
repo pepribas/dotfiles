@@ -83,13 +83,6 @@ function! ToggleToolbar()
     endif
 endfunction
 
-if has("gui_macvim")
-  set guifont=Monaco\ for\ Powerline:h13
-  " powerline symbols in airline
-  let g:airline_powerline_fonts = 1
-else
-  set guifont=Monospace\ 9
-endif
 
 " Commands ----------------------------------------------------------------{{{1
 
