@@ -65,7 +65,7 @@ endif " has ("autocmd")
 
 " Theme settings
 set rtp+=~/.vim/bundle/tomorrow-theme/vim
-colorscheme base16-ashes
+colorscheme base16-eighties
 set background=dark
 
 " Now we set some defaults for the editor
@@ -193,7 +193,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 " syntastic checkers
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_javascript_checkers=['jsl']
+let g:syntastic_javascript_checkers=['jshint']
 
 
 let g:bufExplorerShowRelativePath=1
