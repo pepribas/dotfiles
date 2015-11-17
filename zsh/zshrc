@@ -16,5 +16,7 @@ path=(
 alias hgrep='history | grep'
 alias sctl='supervisorctl'
 
+setopt interactivecomments
+
 # localrc (machine specific shell config)
 [ -e $HOME/.localrc ] && source $HOME/.localrc
