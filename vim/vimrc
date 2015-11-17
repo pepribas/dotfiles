@@ -47,6 +47,9 @@ Bundle 'chase/vim-ansible-yaml'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'jlanzarotta/bufexplorer'
+
+Bundle 'vim-scripts/groovy.vim'
+Bundle 'tfnico/vim-gradle'
 " Very slow on some files, alternative?
 "Bundle 'majutsushi/tagbar'
 
@@ -127,6 +130,8 @@ au BufRead,BufNewFile *.sql set ai sw=4 sts=4 et
 au! BufRead,BufNewFile *.json setfiletype json
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.styl set filetype=styl
+au BufRead,BufNewFile *.groovy  set ai sw=4 sts=4 et " Doc strs
+au BufRead,BufNewFile *.gradle  set ai sw=4 sts=4 et " Doc strs
 
 " jedi-vim options
 let g:jedi#popup_on_dot = 0
