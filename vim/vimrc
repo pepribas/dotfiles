@@ -50,6 +50,13 @@ Bundle 'jlanzarotta/bufexplorer'
 
 Bundle 'vim-scripts/groovy.vim'
 Bundle 'tfnico/vim-gradle'
+
+" load local config
+if filereadable((expand("~/.localvimrc")))
+  source ~/.localvimrc
+endif
+
+
 " Very slow on some files, alternative?
 "Bundle 'majutsushi/tagbar'
 
@@ -68,7 +75,7 @@ endif " has ("autocmd")
 
 " Theme settings
 set rtp+=~/.vim/bundle/tomorrow-theme/vim
-colorscheme base16-eighties
+colorscheme base16-monokai
 set background=dark
 
 " Now we set some defaults for the editor
