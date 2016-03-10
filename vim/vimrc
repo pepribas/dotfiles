@@ -74,6 +74,16 @@ if has("autocmd")
 endif " has ("autocmd")
 
 " Theme settings
+
+" We know xterm-debian is a color terminal
+if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
+  set t_Co=16
+  set t_Sf=[3%dm
+  set t_Sb=[4%dm
+else
+  set t_Co=256
+endif
+
 set rtp+=~/.vim/bundle/tomorrow-theme/vim
 colorscheme base16-monokai
 set background=dark
@@ -152,15 +162,6 @@ let NERDTreeIgnore = ['\.pyc$']
 " This makes Vim show a status line even when only one window is shown. Who
 " said a status line is only useful to separate multiple windows?
 set ls=2
-
-" We know xterm-debian is a color terminal
-if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
-  set t_Co=16
-  set t_Sf=[3%dm
-  set t_Sb=[4%dm
-else
-  set t_Co=256
-endif
 
 " When editing a file, always jump to the last known cursor position.
  " Don't do it when the position is invalid or when inside an event handler
