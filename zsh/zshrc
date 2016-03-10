@@ -18,5 +18,9 @@ alias sctl='supervisorctl'
 
 setopt interactivecomments
 
+# setup base16 sheel
+BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-monokai.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
 # localrc (machine specific shell config)
 [ -e $HOME/.localrc ] && source $HOME/.localrc
