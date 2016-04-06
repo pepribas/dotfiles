@@ -1,0 +1,40 @@
+[include]
+	path = ~/.gitconfig.d/user
+	path = ~/.gitconfig.d/local
+
+[alias]
+	lg = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]%Creset" --graph --decorate --date=short
+	ll = !git lg --stat
+
+	cp = cherry-pick
+	st = status -s
+	cl = clone
+	ci = commit
+	co = checkout
+	br = branch
+	diff = diff --word-diff
+	dc = diff --cached
+
+	r = reset
+	r1 = reset HEAD^
+	r2 = reset HEAD^^
+	rh = reset --hard
+	rh1 = reset HEAD^ --hard
+	rh2 = reset HEAD^^ --hard
+	wip = commit -am "WIP"
+
+	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+	bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+
+	la = "!git config -l | grep alias | cut -c 7-"
+
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	status = auto
+
+[pull]
+	rebase = true
+[core]
+	excludesfile = ~/.gitignore
