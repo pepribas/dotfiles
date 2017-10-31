@@ -2,6 +2,10 @@
 # Executes commands at the start of an interactive session.
 #
 
+_has(){
+    command type "$1" > /dev/null 2>&1
+}
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -17,10 +21,29 @@ alias hgrep='history | grep'
 alias sctl='supervisorctl'
 
 setopt interactivecomments
+setopt no_share_history
 
 # setup base16 sheel
 BASE16_SHELL="$HOME/.dotfiles/zsh/base16-shell/base16-monokai.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
+# setup nvm-zsh
+export NVM_LAZY_LOAD=true
+NVM_ZSH="$HOME/.dotfiles/zsh/zsh-nvm/zsh-nvm.plugin.zsh"
+[[ -s $NVM_ZSH ]] && source $NVM_ZSH
+
 # localrc (machine specific shell config)
 [ -e $HOME/.localrc ] && source $HOME/.localrc
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fzf + ag configuration
+if _has fzf && _has ag; then
+  export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_DEFAULT_OPTS='
+  --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
+  --color info:108,prompt:109,spinner:108,pointer:168,marker:168
+  '
+fi

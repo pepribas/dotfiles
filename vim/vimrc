@@ -16,49 +16,47 @@ set nocompatible	"    Use Vim defaults instead of 100% vi compatibility
 set backspace=indent,eol,start	" more powerful backspacing
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=/usr/local/opt/fzf
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " original repos on GitHub
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
-Bundle 'ervandew/supertab'
-Bundle 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'ervandew/supertab'
+Plugin 'bling/vim-airline'
 
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'chriskempson/tomorrow-theme'
-Bundle 'chriskempson/base16-vim'
+Plugin 'chriskempson/base16-vim'
 
-Bundle 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
+
+Plugin 'vim-ruby/vim-ruby'
 " python
-Bundle 'hdima/python-syntax'
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'davidhalter/jedi-vim'
+Plugin 'hdima/python-syntax'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'davidhalter/jedi-vim'
 
-Bundle 'diefans/vim-da-yaml'
-Bundle 'chase/vim-ansible-yaml'
+Plugin 'diefans/vim-da-yaml'
+Plugin 'chase/vim-ansible-yaml'
 
-Bundle 'ctrlpvim/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'jlanzarotta/bufexplorer'
+Plugin 'junegunn/fzf.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'jlanzarotta/bufexplorer'
 
-Bundle 'vim-scripts/groovy.vim'
-Bundle 'tfnico/vim-gradle'
+Plugin 'vim-scripts/groovy.vim'
+Plugin 'tfnico/vim-gradle'
+
+call vundle#end()
+filetype plugin indent on
 
 " load local config
 if filereadable((expand("~/.localvimrc")))
   source ~/.localvimrc
 endif
-
-
-" Very slow on some files, alternative?
-"Bundle 'majutsushi/tagbar'
 
 if has('gui_running')
   set guifont=Monaco\ for\ Powerline:h13
@@ -84,7 +82,6 @@ else
   set t_Co=256
 endif
 
-set rtp+=~/.vim/bundle/tomorrow-theme/vim
 colorscheme base16-monokai
 set background=dark
 
@@ -139,7 +136,8 @@ set listchars=tab:▸\ ,trail:█
 nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
 " au BufRead,BufNewFile *.py  set ai sw=4 sts=4 et tw=72 " Doc strs
-au BufRead,BufNewFile *.js  set ai sw=4 sts=4 et tw=72 " Doc strs
+au BufRead,BufNewFile *.js  set ai sw=2 sts=2 et tw=72 " Doc strs
+au BufRead,BufNewFile *.jsx  set ai sw=2 sts=2 et tw=72 " Doc strs
 au BufRead,BufNewFile *.html set ai sw=4 sts=4 et tw=72 " Doc strs
 au BufRead,BufNewFile *.json set ai sw=4 sts=4 et tw=72 " Doc strs
 au BufRead,BufNewFile *.less set ai sw=4 sts=4 et tw=72 " Doc strs
@@ -149,6 +147,8 @@ au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.styl set filetype=styl
 au BufRead,BufNewFile *.groovy  set ai sw=4 sts=4 et " Doc strs
 au BufRead,BufNewFile *.gradle  set ai sw=4 sts=4 et " Doc strs
+
+autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 
 " jedi-vim options
 let g:jedi#popup_on_dot = 0
@@ -174,40 +174,15 @@ autocmd BufReadPost *
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-"------------------------------------------------------------------------------
-" Function keys.
-"------------------------------------------------------------------------------
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
-" nnoremap <left> <nop>
-" nnoremap <right> <nop>
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
-" nnoremap j gj
-" nnoremap k gk
-
 map q :q<CR>
 
-nnoremap <leader>a :Ack<space>
-nnoremap <leader>s :CtrlPBuffer<cr>
-nnoremap <leader>f :CtrlP<cr>
+ if executable('ag')
+   let g:ackprg = 'ag --vimgrep'
+ endif
 
-" syntastic
-map <leader>ee :lopen<CR>
-map <leader>ed :lclose<CR>
-map <leader>er :lnext<CR>
-map <leader>ew :lprev<CR>
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-" syntastic checkers
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_javascript_checkers=['jshint']
-
+nnoremap <leader>a :Search<space>
+nnoremap <leader>s :Buffers<cr>
+nnoremap <leader>f :Files<cr>
 
 let g:bufExplorerShowRelativePath=1
 let g:bufExplorerSplitOutPathName=0
@@ -242,6 +217,3 @@ nmap <C-j> :bn<CR>
 " toggle comments with NERDCommenter
 vmap <C-c> <Leader>c<space>gv
 map <C-c> <Leader>c<space>
-
-map <leader>ms :mksession! ~/.vim/session<CR>
-map <leader>ls :source ~/.vim/session<CR>
